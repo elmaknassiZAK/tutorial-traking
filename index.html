@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__text">
+      <p class="eyebrow">// frontend-mastery</p>
+      <h1>Salam, <span id="student"></span> 👋</h1>
+      <p class="sub">12 semana bach twli frontend developer pro.</p>
+    </div>
+    <div class="ring" id="ring">
+      <svg viewBox="0 0 120 120">
+        <circle class="ring__bg" cx="60" cy="60" r="52"></circle>
+        <circle class="ring__fg" id="ringFg" cx="60" cy="60" r="52"></circle>
+      </svg>
+      <div class="ring__label"><strong id="pct">0%</strong><span>global</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="stats">
+      <div class="stat"><span class="stat__num" id="statDone">0</span><span class="stat__lbl">iyam salin</span></div>
+      <div class="stat"><span class="stat__num" id="statWeek">1</span><span class="stat__lbl">semana daba</span></div>
+      <div class="stat"><span class="stat__num" id="statStreak">0</span><span class="stat__lbl">🔥 streak</span></div>
+      <div class="stat"><span class="stat__num" id="statLate">0</span><span class="stat__lbl">fatouk</span></div>
+    </section>
+
+    <section class="today" id="today"></section>
+
+    <section>
+      <h2 class="section-title">Roadmap</h2>
+      <div class="weeks" id="weeks"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Clique 3la status dyal ay nhar bach tbeddlo (kaytsjjel ghir f had navigateur).</p>
+    <button class="btn" id="exportBtn">Copier data.js jdid</button>
+    <button class="btn btn--ghost" id="resetBtn">Reset l data.js</button>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
