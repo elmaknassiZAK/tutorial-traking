@@ -79,6 +79,7 @@ function render() {
     circumference * (1 - stats.pct / 100);
 
   renderToday();
+  renderProjects();
   renderWeeks(stats.currentWeek);
 }
 
@@ -98,7 +99,50 @@ function renderToday() {
   box.innerHTML = `
     <p class="today__tag">// ${isToday ? "task dyal lyoum" : "task jaya"} · ${today.id} · ${today.type}</p>
     <h3>${today.title}</h3>
-    <p>${today.details}</p>`;
+    <p>${today.details}</p>
+    <div class="today__actions">${dayLinks(today, true)}</div>`;
+}
+
+// Liens dyal cours w projet l nhar
+function lessonUrl(day) {
+  return `lesson.html?id=${day.id}`;
+}
+function dayLinks(day, big = false) {
+  const cls = big ? "btn" : "chip";
+  let html = "";
+  if (day.lesson) html += `<a class="${cls}" href="${lessonUrl(day)}">📖 Cours</a>`;
+  if (day.project && day.projectLive)
+    html += `<a class="${cls} ${big ? "btn--ghost" : "chip--project"}" href="${day.project}" target="_blank">💻 Projet</a>`;
+  return html;
+}
+
+// ---------- Projets ----------
+function renderProjects() {
+  const box = document.getElementById("projects");
+  const projects = allDays().filter((d) => d.project);
+  const planned = course.weeks.filter((w) => w.days.length === 0);
+
+  const cards = projects.map((d) => {
+    const live = d.projectLive;
+    return `
+      <article class="project ${live ? "is-live" : ""}">
+        <span class="project__day">${d.id} · S${d.week}</span>
+        <h3 class="project__title">${d.projectName || d.title}</h3>
+        <code class="project__path">${d.project}</code>
+        ${live
+          ? `<a class="chip chip--project" href="${d.project}" target="_blank">Chouf l projet ↗</a>`
+          : `<span class="project__wait">Mazal ma tla3 l GitHub</span>`}
+      </article>`;
+  });
+
+  const future = planned.map((w) => `
+      <article class="project is-locked">
+        <span class="project__day">S${w.id}</span>
+        <h3 class="project__title">${w.project}</h3>
+        <span class="project__wait">🔒 ${w.title}</span>
+      </article>`);
+
+  box.innerHTML = cards.concat(future).join("");
 }
 
 function renderWeeks(currentWeek) {
@@ -139,7 +183,10 @@ function renderWeeks(currentWeek) {
           <span class="day__title">${day.title}</span><br>
           <span class="day__meta">${day.date} · ${day.type}</span>
         </span>
-        <button class="badge badge--${s}" title="Clique bach tbeddel">${STATUS_LABEL[s]}</button>`;
+        <span class="day__actions">
+          ${dayLinks(day)}
+          <button class="badge badge--${s}" title="Clique bach tbeddel">${STATUS_LABEL[s]}</button>
+        </span>`;
       row.querySelector(".badge").addEventListener("click", () => cycleStatus(day));
       list.appendChild(row);
     });

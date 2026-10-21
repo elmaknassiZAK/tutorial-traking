@@ -5,6 +5,10 @@
 //    "doing" = kankhdem fih
 //    "done"  = sali
 //  Men be3d : git add . && git commit -m "J1 sali" && git push
+//
+//  lesson: true       → kayn cours f lessons/<id>.md
+//  project: "path/"   → fin kayn l projet dyal had nhar
+//  projectLive: true  → beddelha l true mli tpushi l projet (bach ybano f dashboard)
 // =============================================
 
 window.COURSE = {
@@ -14,13 +18,13 @@ window.COURSE = {
     {
       id: 1, title: "HTML + Git asas", project: "Page dyal profil",
       days: [
-        { id: "J1", date: "2026-10-21", type: "Lesson", status: "doing", title: "Setup + HTML lowel", details: "VS Code + Live Server. Structure HTML, h1-h6, p, ul/li, a, img. Exercice : page dyal profil." },
-        { id: "J2", date: "2026-10-22", type: "Lesson", status: "todo", title: "Lists, liens, images, tables", details: "ol vs ul, liens internes w externes, chemins relatifs, table. Exercice : emploi du temps." },
-        { id: "J3", date: "2026-10-23", type: "Lesson", status: "todo", title: "Formulaires", details: "form, label, input, select, textarea, button. Exercice : formulaire d'inscription." },
-        { id: "J4", date: "2026-10-24", type: "Lesson", status: "todo", title: "HTML sémantique", details: "header, nav, main, section, article, footer + accessibilité asas." },
-        { id: "J5", date: "2026-10-25", type: "Révision", status: "todo", title: "Révision S1 + quiz", details: "Rja3 l kolchi bla notes. Quiz m3a Claude." },
-        { id: "J6", date: "2026-10-26", type: "Lesson", status: "todo", title: "Git + GitHub asas", details: "git init, add, commit, push. Push page dyal profil." },
-        { id: "J7", date: "2026-10-27", type: "Projet", status: "todo", title: "Projet : site 3 pages HTML", details: "Accueil, À propos, Contact. Push l GitHub." }
+        { id: "J1", lesson: true, project: "projects/j1-profil/", projectName: "Page dyal profil", projectLive: false, date: "2026-10-21", type: "Lesson", status: "doing", title: "Setup + HTML lowel", details: "VS Code + Live Server. Structure HTML, h1-h6, p, ul/li, a, img. Exercice : page dyal profil." },
+        { id: "J2", lesson: true, date: "2026-10-22", type: "Lesson", status: "todo", title: "Lists, liens, images, tables", details: "ol vs ul, liens internes w externes, chemins relatifs, table. Exercice : emploi du temps." },
+        { id: "J3", lesson: true, project: "projects/j3-inscription/", projectName: "Formulaire d'inscription", projectLive: false, date: "2026-10-23", type: "Lesson", status: "todo", title: "Formulaires", details: "form, label, input, select, textarea, button. Exercice : formulaire d'inscription." },
+        { id: "J4", lesson: true, date: "2026-10-24", type: "Lesson", status: "todo", title: "HTML sémantique", details: "header, nav, main, section, article, footer + accessibilité asas." },
+        { id: "J5", lesson: true, project: "projects/j5-defi/", projectName: "Défi : recette dyal tajine", projectLive: false, date: "2026-10-25", type: "Révision", status: "todo", title: "Révision S1 + quiz", details: "Rja3 l kolchi bla notes. Quiz m3a Claude." },
+        { id: "J6", lesson: true, date: "2026-10-26", type: "Lesson", status: "todo", title: "Git + GitHub asas", details: "git init, add, commit, push. Push page dyal profil." },
+        { id: "J7", lesson: true, project: "projects/j7-club/", projectName: "Site dyal club (3 pages)", projectLive: false, date: "2026-10-27", type: "Projet", status: "todo", title: "Projet : site 3 pages HTML", details: "Accueil, À propos, Contact. Push l GitHub." }
       ]
     },
     {
